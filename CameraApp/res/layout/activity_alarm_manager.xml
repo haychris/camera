@@ -1,0 +1,22 @@
+<LinearLayout android:layout_height="match_parent"
+   android:layout_width="match_parent" android:orientation="vertical"
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   tools:context=".AlarmManagerActivity" 
+   >
+ 
+   <Button android:id="@+id/btStart" 
+       android:layout_height="wrap_content"
+     android:layout_width="match_parent" 
+     android:onClick="startRepeatingTimer"
+     android:padding="@dimen/padding_medium"
+      android:text="@string/btStart"  />
+   <Button android:id="@+id/btCancel" android:layout_height="wrap_content"
+     android:layout_width="match_parent" android:onClick="cancelRepeatingTimer" 
+     android:padding="@dimen/padding_medium" android:text="@string/btCancel"
+     tools:context=".AlarmManagerActivity"/>
+    <Button android:id="@+id/btOneTime" android:layout_height="wrap_content"
+    android:layout_width="match_parent" android:onClick="onetimeTimer"
+    android:padding="@dimen/padding_medium" android:text="@string/btOneTime"  
+    tools:context=".AlarmManagerActivity"/>
+  </LinearLayout>
