@@ -4,5 +4,9 @@
     <string name="app_name">CameraApp</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_alarm_manager">AlarmManagerActivity</string>
+    <string name="btStart">Start repeating timer</string>
+    <string name="btCancel">Cancel repeating timer</string>
+    <string name="btOneTime">One-time timer</string>
 
 </resources>

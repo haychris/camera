@@ -1,7 +1,12 @@
 package bg.geo.camera;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
@@ -62,7 +67,16 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 
 	@Override
 	public void onPictureTaken(byte[] data, Camera camera) {
+		
 		this.camera.release();
+		
+		InputStream is = new ByteArrayInputStream(data);
+
+		Bitmap bmp = BitmapFactory.decodeStream(is); //now do what you want with it. 
+		
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+	    bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+	    byte[] byteArray = stream.toByteArray();
 		//pictureTakenListener.PictureTaken();		
 	}
 
