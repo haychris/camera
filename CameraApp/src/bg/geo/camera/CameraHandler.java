@@ -44,7 +44,7 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 		try {
 			camera.setPreviewDisplay(surfaceHolder);
 			camera.startPreview();
-			timerHandler.postDelayed(timerRunnable, 10000);
+			timerHandler.postDelayed(timerRunnable, 3000);
 			
 			
 		} catch (IOException e) {
@@ -62,8 +62,8 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 
 	@Override
 	public void onPictureTaken(byte[] data, Camera camera) {
-		camera.release();
-		pictureTakenListener.PictureTaken();		
+		this.camera.release();
+		//pictureTakenListener.PictureTaken();		
 	}
 
 	@Override

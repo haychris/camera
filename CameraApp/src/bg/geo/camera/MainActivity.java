@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements IPictureTakenListener{
         setContentView(R.layout.activity_main);
         
          camera1 = Camera.open(0);
-         camera2 = Camera.open(1);
+//         camera2 = Camera.open(1);
          
          SurfaceView surfaceView = (SurfaceView)findViewById(R.id.surface1);
          surfaceView.getHolder().addCallback(new CameraHandler(camera1, this));
