@@ -31,9 +31,11 @@ public class ImageCaptureCallback implements PictureCallback {
 	String twoHyphens = "--";
 	String boundary =  "*****";
 	byte[] buffer;
+	
+	CameraHandler cameraHandler;
 
-	public ImageCaptureCallback(OutputStream filoutputStream) {
-		//this.filoutputStream = filoutputStream;
+	public ImageCaptureCallback(CameraHandler cameraHandler) {
+		this.cameraHandler = cameraHandler;
 	}
 
 	@Override
@@ -98,6 +100,8 @@ public class ImageCaptureCallback implements PictureCallback {
 		} catch (IOException e) {
 			Log.v(TAG, "Ex:" + e);
 		}
+		
+		cameraHandler.onPictureTaken();
 
 	}
 

@@ -36,6 +36,10 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
          msgStr.append(formatter.format(new Date()));
  
          Toast.makeText(context, msgStr, Toast.LENGTH_LONG).show();
+         
+         Intent startCamera = new Intent(context, MainActivity.class);
+         startCamera.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+         context.startActivity(startCamera);
           
          //Release the lock
          wl.release();
@@ -48,7 +52,7 @@ public class AlarmManagerBroadcastReceiver extends BroadcastReceiver {
         intent.putExtra(ONE_TIME, Boolean.FALSE);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
         //After after 5 seconds
-        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 5 , pi); 
+        am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 30 , pi); 
     }
  
     public void cancelAlarm(Context context)

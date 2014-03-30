@@ -55,13 +55,14 @@ public class MainActivity extends Activity implements IPictureTakenListener{
     }
     
     public void PictureTaken() {
-    	if (pictureTaken)
-    		return;
-    	pictureTaken = true;
-        camera2 = Camera.open(1);
-        SurfaceView surfaceView = (SurfaceView)findViewById(R.id.surface2);
-        surfaceView.getHolder().addCallback(new CameraHandler(camera2, this));
-       
+    	//if (pictureTaken)
+    	//	return;
+    	//pictureTaken = true;
+        //camera2 = Camera.open(1);
+        //SurfaceView surfaceView = (SurfaceView)findViewById(R.id.surface2);
+        //surfaceView.getHolder().addCallback(new CameraHandler(camera2, this));
+    	
+    	this.finish();       
     }
 
 

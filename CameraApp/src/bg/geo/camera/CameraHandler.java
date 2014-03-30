@@ -14,7 +14,7 @@ import android.os.Handler;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 
-public class CameraHandler implements Callback, ShutterCallback, PictureCallback {
+public class CameraHandler implements Callback, ShutterCallback {
 	private Camera camera;
 	private IPictureTakenListener pictureTakenListener;
 	
@@ -35,7 +35,7 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 		this.camera = camera;		
 		this.pictureTakenListener = pictureTakenListener;
 		shutterCallback = this;
-		pictureCallback = new ImageCaptureCallback(new ByteArrayOutputStream());
+		pictureCallback = new ImageCaptureCallback(this);
 	}
 	
 	@Override
@@ -65,19 +65,11 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 		
 	}
 
-	@Override
-	public void onPictureTaken(byte[] data, Camera camera) {
-		
+
+	public void onPictureTaken() {		
 		this.camera.release();
 		
-		InputStream is = new ByteArrayInputStream(data);
-
-		Bitmap bmp = BitmapFactory.decodeStream(is); //now do what you want with it. 
-		
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-	    bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-	    byte[] byteArray = stream.toByteArray();
-		//pictureTakenListener.PictureTaken();		
+		pictureTakenListener.PictureTaken();		
 	}
 
 	@Override
