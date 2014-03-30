@@ -1,13 +1,9 @@
 package bg.geo.camera;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -48,11 +44,11 @@ public class ImageCaptureCallback implements PictureCallback {
 		        StrictMode.setThreadPolicy(policy);
 			
 			//Uncomment this if you want to decrease the size and quality of the picture
-			//InputStream is = new ByteArrayInputStream(data);
-			//Bitmap bmp = BitmapFactory.decodeStream(is); 			
-			//ByteArrayOutputStream stream = new ByteArrayOutputStream();			
-			//bmp.compress(Bitmap.CompressFormat.JPEG, 50, stream);
-		    //byte[] byteArray = stream.toByteArray();
+			InputStream is = new ByteArrayInputStream(data);
+			Bitmap bmp = BitmapFactory.decodeStream(is); 			
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();			
+			bmp.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+		    byte[] byteArray = stream.toByteArray();
 			
 			
 			//filoutputStream.write(data);
