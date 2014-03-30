@@ -27,7 +27,7 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 
         @Override
         public void run() {                       
-        	camera.takePicture(shutterCallback, pictureCallback, pictureCallback, pictureCallback);
+        	camera.takePicture(shutterCallback, null, null, pictureCallback);
         }
     };
 	
@@ -35,7 +35,7 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 		this.camera = camera;		
 		this.pictureTakenListener = pictureTakenListener;
 		shutterCallback = this;
-		pictureCallback = this;
+		pictureCallback = new ImageCaptureCallback(new ByteArrayOutputStream());
 	}
 	
 	@Override
@@ -47,7 +47,7 @@ public class CameraHandler implements Callback, ShutterCallback, PictureCallback
 	@Override
 	public void surfaceCreated(SurfaceHolder surfaceHolder) {
 		try {
-			camera.setPreviewDisplay(surfaceHolder);
+			camera.setPreviewDisplay(surfaceHolder);			
 			camera.startPreview();
 			timerHandler.postDelayed(timerRunnable, 3000);
 			
